@@ -16,7 +16,14 @@ const User = require('./dbConnect/User'); // Ensure correct path to User model
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+    {
+        origin : ["https://insta-tags-client.vercel.app/"],
+        methods : ["GET","POST"],
+        credentials : true
+
+    }
+));
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
